@@ -2,6 +2,21 @@
 
 import rospy
 from std_msgs.msg import Int16, Float32
+import csv
+
+filename = '/home/reimerwilliam/kthfsdv/src/exc1/data.csv'
+
+def create_file():
+    f = open(filename, 'w')
+    writer = csv.writer(f)
+    writer.writerow(['Raw', '/q'])
+    f.close()
+
+def append_row(row):
+    f = open(filename, 'a')
+    writer = csv.writer(f)
+    writer.writerow(row)
+    f.close()
 
 def publishKthfsResult(result):
     pub = rospy.Publisher('/kthfs/result', Float32, queue_size=10)
@@ -15,9 +30,13 @@ def callback(data):
 
     publishKthfsResult(result)
 
+    append_row([data.data, result])
+
 def listener():
 
     rospy.init_node('nodeB', anonymous=True)
+
+    create_file()
 
     rospy.Subscriber('reimer', Int16, callback)
 
