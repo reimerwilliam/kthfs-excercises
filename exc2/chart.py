@@ -9,7 +9,7 @@ class Chart(tk.Frame):
         self.master = master
         self.display_grid = tk.IntVar()
         self.__create_chart()
-        self.__create_grid_control()   
+        self.__create_grid_control()
 
     def __create_chart(self):
         self.figure = Figure(dpi=100)
@@ -27,6 +27,3 @@ class Chart(tk.Frame):
 
         checkbutton = tk.Checkbutton(self, text='Show grid', variable=self.display_grid, command=handleCheck)
         checkbutton.grid(row=1, column=0)
-
-
-    
