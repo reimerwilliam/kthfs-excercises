@@ -3,8 +3,9 @@
 import rospy
 from std_msgs.msg import Int16, Float32
 import csv
+import os
 
-filename = '/home/reimerwilliam/kthfsdv/src/exc1/data.csv'
+filename = os.path.join(os.path.realpath('.'), '../../data.csv')
 
 def create_file():
     f = open(filename, 'w')
