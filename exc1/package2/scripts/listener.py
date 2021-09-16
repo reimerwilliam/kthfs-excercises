@@ -19,7 +19,7 @@ def append_row(row):
     writer.writerow(row)
     f.close()
 
-def publishKthfsResult(result):
+def publish_kthfs_result(result):
     pub = rospy.Publisher('/kthfs/result', Float32, queue_size=10)
     rospy.loginfo("Publishing result: " + str(result))
     pub.publish(result)
@@ -29,7 +29,7 @@ def callback(data):
     result = data.data / q
     rospy.loginfo(rospy.get_caller_id() + 'I heard %s', result)
 
-    publishKthfsResult(result)
+    publish_kthfs_result(result)
 
     append_row([data.data, result])
 
