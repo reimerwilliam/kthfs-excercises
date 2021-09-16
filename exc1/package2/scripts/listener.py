@@ -5,7 +5,7 @@ from std_msgs.msg import Int16, Float32
 import csv
 import os
 
-filename = os.path.join(os.path.realpath('.'), '../../data.csv')
+filename = os.path.join(os.path.dirname(__file__), '../../data.csv')
 
 def create_file():
     f = open(filename, 'w')

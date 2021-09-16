@@ -20,7 +20,7 @@ class ResultChart(Chart):
         self.reset_button()
 
     def read_file(self):
-        with open(os.path.join(os.path.realpath('.'), '../exc1/data.csv'), 'r') as f:
+        with open(os.path.join(os.path.dirname(__file__), '../exc1/data.csv'), 'r') as f:
             reader = csv.reader(f, delimiter=',')
             for row in reader:
                 self.rows.append(row)
